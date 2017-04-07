@@ -19,7 +19,7 @@ Plugin.extend({
         } else {
             console.log('com.github.steotia.peerplay.scorer.summary CORE: OK');
             instance._theme.setParam('com.github.steotia.peerplay.core',undefined);
-            // EkstepRendererAPI.dispatchEvent('com.github.steotia.peerplay.core.cleanup');
+            EkstepRendererAPI.dispatchEvent('com.github.steotia.peerplay.core.state.stop');
         }
 
         var p1Score, p2Score;
@@ -31,9 +31,9 @@ Plugin.extend({
         var uuid;
         for(uuid in scores){
             if(uuid!=myuuid){
-                p2Score = scores[myuuid]||0;
+                p2Score = scores[uuid]||0;
             } else {
-                p1Score = scores[myuuid]||0;
+                p1Score = scores[uuid]||0;
             }
         }
 
